@@ -2,10 +2,22 @@ using UnityEngine;
 
 public class UnitState : MonoBehaviour
 {
-    public static UnitState instance;
+    #region Enums
+    public enum UnitMovementState
+    {
+        Walk,
+        Dash,
+        KnockedOut
+    }
 
-    [SerializeField] PlayerMovement _playerMovement;
-    [SerializeField] UnitSpells _unitSpells;
+    public enum UnitLiveState
+    {
+        Alive,
+        Dead
+    }
+    #endregion
+
+    public static UnitState instance;
 
     [Tooltip("Current unit movement state")]
     public UnitMovementState unitMovementState;
@@ -53,18 +65,5 @@ public class UnitState : MonoBehaviour
         }
 
         return false;
-    }
-
-    public enum UnitMovementState
-    {
-        Walk,
-        Dash,
-        KnockedOut
-    }
-
-    public enum UnitLiveState
-    {
-        Alive,
-        Dead
     }
 }
