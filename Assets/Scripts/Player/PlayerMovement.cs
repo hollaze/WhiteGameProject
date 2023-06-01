@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    #region Scriptable Objects
     [SerializeField] PlayerInputScriptableObject _inputSO;
     [SerializeField] MovementScriptableObject _movementSO;
+    #endregion
     [SerializeField] Rigidbody2D _rb;
 
     private Vector2 _movement;
@@ -12,8 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        _movement.x = Input.GetAxis(_inputSO.horizontal);
-        _movement.y = Input.GetAxis(_inputSO.vertical);
+        SetInputAxis();
     }
 
     void FixedUpdate()
@@ -22,12 +23,21 @@ public class PlayerMovement : MonoBehaviour
         Rotation();
     }
 
-    // Move on movement input
-    public void Movement()
+    // Set horizontal and vertical input axis
+    private void SetInputAxis()
+    {
+        _movement.x = Input.GetAxis(_inputSO.horizontal);
+        _movement.y = Input.GetAxis(_inputSO.vertical);
+    }
+
+    // Move on movement input axis
+    private void Movement()
     {
         if (UnitState.instance.IsState(UnitState.UnitMovementState.Walk))
         {
-            _rb.MovePosition(_rb.position + _movement * _movementSO.speed * Time.fixedDeltaTime);
+            _movement = _movement.normalized;
+
+            _rb.MovePosition(_rb.position + _movement * Time.deltaTime * _movementSO.speed);
         }
     }
 
