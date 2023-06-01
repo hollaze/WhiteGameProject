@@ -14,5 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   rotationSpeed: 1000
-  dashDistance: 5
-  dashDelay: 2

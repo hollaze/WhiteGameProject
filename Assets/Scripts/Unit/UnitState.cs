@@ -4,9 +4,6 @@ public class UnitState : MonoBehaviour
 {
     public static UnitState instance;
 
-    [SerializeField] PlayerMovement _playerMovement;
-    [SerializeField] UnitSpells _unitSpells;
-
     [Tooltip("Current unit movement state")]
     public UnitMovementState unitMovementState;
 
