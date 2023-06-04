@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b9bbfc83f0afc4d832310d3338dacb, type: 3}
   m_Name: Abilities
   m_EditorClassIdentifier: 
-  dashForce: 1000
+  dashForce: 1500
   nextDashDelay: 1
   dashDelay: 0.1
